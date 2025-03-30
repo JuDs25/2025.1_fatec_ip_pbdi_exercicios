@@ -31,3 +31,18 @@ BEGIN
     RAISE NOTICE 'número real aleatório: %', num;
 END;
 $$
+--  1.3 Faça um programa que gere um valor real no intervalo [20, 30] que representa uma
+ -- temperatura em graus Celsius. Faça a conversão para Fahrenheit e exiba.
+
+DO $$
+DECLARE
+    fltTempCelsius REAL;
+    fltTempFahrenheit REAL;
+BEGIN
+    fltTempCelsius:= random() * 10 + 20; -- ex: 0 * 10 + 20 = 20 | 0.9999 * 10 + 20 = 29.9999999
+    -- F = C * 9/5 + 32
+    fltTempFahrenheit:= (fltTempCelsius * 9/5) + 32;
+    RAISE NOTICE 'A temperatural em graus Celsius é de: %', fltTempCelsius;
+    RAISE NOTICE 'A temperatural convertida de graus Celsius para Fahrenheit é de: %', fltTempFahrenheit;
+END;
+$$
