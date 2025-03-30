@@ -20,3 +20,14 @@ BEGIN
     RAISE NOTICE 'número inteiro aleatório: %', num;
 END;
 $$
+
+-- 1.2. Faça um programa que gere um valor real e o exiba.
+DO $$
+DECLARE
+    num REAL;
+BEGIN
+--usar floor(), elimina a parte decimal, o que descaracteriza um número real de verdade (com casas após o ponto)
+    num:= random() * 9 + 1; -- vai dar até 10, mas nunca 10, ou seja, até 9.9999999999....
+    RAISE NOTICE 'número real aleatório: %', num;
+END;
+$$
