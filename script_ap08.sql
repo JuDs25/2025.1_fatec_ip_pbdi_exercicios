@@ -46,3 +46,20 @@ BEGIN
     RAISE NOTICE 'A temperatural convertida de graus Celsius para Fahrenheit é de: %', fltTempFahrenheit;
 END;
 $$
+-- 1.4 Faça um programa que gere três valores reais a, b, e c e mostre o valor de delta
+
+DO $$
+DECLARE
+    a REAL;
+    b REAL;
+    c REAL;
+    delta REAL;
+BEGIN
+    a:= random() * 9 + 1;
+    b:= random() * 9 + 1;
+    c:= random() * 9 + 1;
+-- Calcula delta
+    delta := b^2 - 4 * a * c;
+    RAISE NOTICE 'O valor de delta é %', delta;
+END;
+$$
