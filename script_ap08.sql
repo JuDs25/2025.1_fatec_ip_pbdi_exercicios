@@ -83,9 +83,36 @@ BEGIN
     raizQuadrada:= numSucessor  ^ (1.0 / 2.0);
     -- ou seja: 1.0 / 3.0 → raiz cúbica
     raizCubica:= numAntecessor ^ (1.0 / 3.0);
-    
+
     RAISE NOTICE 'Número gerado: %', num;
     RAISE NOTICE 'Raiz cúbica do antecessor (%): %', numAntecessor, raizCubica;
     RAISE NOTICE 'Raiz quadrada do sucessor (%): %', numSucessor, raizQuadrada;
+END;
+$$
+
+--  1.6 Faça um programa que gere medidas reais de um terreno retangular. Gere também um
+ -- valor real no intervalo [60, 70] que representa o preço por metro quadrado. O programa deve
+-- exibir o valor total do terreno
+DO $$
+DECLARE
+    comprimento REAL;
+    largura REAL;
+    precoM2 REAL;
+    area REAL;
+    valorTotal REAL;
+BEGIN
+    -- Gera comprimento e largura entre 1 e 10 m
+    comprimento:= random() * 9 + 1;
+    largura:= random() * 9 + 1;
+
+    -- Gera preço por metro quadrado entre 60 e 70
+    precoM2:= random() * 10 + 60;
+
+    -- Calcula área e valor
+    area:= comprimento * largura;
+    valorTotal:= area * precoM2;
+    -- formatação de valor float com casa decimal, retirando o espaço à esquerda (Fill Mode - modo de preenchimento), 
+    -- contando com 5 casas antes da vírgula e 2 casas decimais
+    RAISE NOTICE 'Valor total do terreno: R$ %', to_char(valorTotal, 'FM99999.00');
 END;
 $$
