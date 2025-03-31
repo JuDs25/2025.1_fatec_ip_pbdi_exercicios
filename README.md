@@ -6,4 +6,5 @@ Este repositório contém os exercícios desenvolvidos na disciplina de **Progra
 
 Os exercícios seguem o material didático (apostilas) da FATEC, abrangendo:
 
-- **Apostila 08** : Blocos, Estrutura Sequencial e Aritmética  
+- **Apostila 08** : Blocos, Estrutura Sequencial e Aritmética
+- **Apostila 09** : Operadores Lógicos e Relacionais + Estruturas de Seleção em PL/pgSQL
