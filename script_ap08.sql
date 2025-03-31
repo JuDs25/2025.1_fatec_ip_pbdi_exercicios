@@ -63,3 +63,29 @@ BEGIN
     RAISE NOTICE 'O valor de delta é %', delta;
 END;
 $$
+
+--1.5 Faça umprograma que gere um número inteiro e mostre a raiz cúbica de seu antecessor
+ -- e a raiz quadrada de seu sucessor
+DO $$
+DECLARE
+    num INT;
+    numAntecessor INT;
+    numSucessor INT;
+    raizCubica REAL;
+    raizQuadrada REAL;
+BEGIN
+    num:= floor(random() * 100 + 1)::INT;
+
+    numAntecessor:= num - 1;
+    numSucessor:= num + 1;
+    -- quem está por dentro está por cima (numerador), quem está por fora está por baixo (denominador)
+    -- ou seja: 1.0 / 2.0 ou 0.5 → raiz quadrada
+    raizQuadrada:= numSucessor  ^ (1.0 / 2.0);
+    -- ou seja: 1.0 / 3.0 → raiz cúbica
+    raizCubica:= numAntecessor ^ (1.0 / 3.0);
+    
+    RAISE NOTICE 'Número gerado: %', num;
+    RAISE NOTICE 'Raiz cúbica do antecessor (%): %', numAntecessor, raizCubica;
+    RAISE NOTICE 'Raiz quadrada do sucessor (%): %', numSucessor, raizQuadrada;
+END;
+$$
