@@ -178,3 +178,71 @@ BEGIN
     END CASE;
 END;
 $$
+-- 1.5 Resolva o problema disponível no link a seguir.
+-- https://www.beecrowd.com.br/judge/en/problems/view/1048
+
+ -- SOLUÇÃO 1.5 - Com apenas IF e suas variações
+DO $$
+DECLARE
+    salarioAtual REAL:= valor_aleatorio_entre(1, 50000);
+    valorPercentual INTEGER;
+    valorReajuste REAL;
+    salarioReajuste REAL;
+BEGIN
+    IF salarioAtual <= 400.00 THEN
+        valorPercentual:= 15;
+    ELSIF salarioAtual <= 800.00 THEN
+        valorPercentual:= 12;
+    ELSIF salarioAtual <= 1200.00 THEN
+        valorPercentual:= 10;
+    ELSIF salarioAtual <= 2000.00 THEN
+        valorPercentual:= 7;
+    ELSE
+       valorPercentual:= 4;
+    END IF;
+    -- valor do reajuste em porcentagem
+    valorReajuste:= salarioAtual * valorPercentual / 100;
+    salarioReajuste:= salarioAtual + valorReajuste;
+
+    -- Print dos resultados conforme solicitado no "problema 1048 do Beecrowd"
+    RAISE NOTICE 'Salário atual: R$ %', salarioAtual;
+    RAISE NOTICE 'Reajuste Percentual % %%', valorPercentual;
+    RAISE NOTICE 'Reajuste ganho: R$ %', valorReajuste;
+    RAISE NOTICE 'Novo salário: R$ %', salarioReajuste;
+END;
+$$
+
+-- SOLUÇÃO 2.5 - Com apenas CASE e suas variações
+DO $$
+DECLARE
+    salarioAtual REAL:= valor_aleatorio_entre(1, 50000);
+    valorPercentual INTEGER;
+    valorReajuste REAL;
+    salarioReajuste REAL;
+BEGIN
+    CASE
+        WHEN
+            salarioAtual <= 400.00 THEN
+                valorPercentual:= 15;
+        WHEN
+            salarioAtual <= 800.00 THEN
+                valorPercentual:= 12;
+        WHEN salarioAtual <= 1200.00 THEN
+                valorPercentual:= 10;
+        WHEN
+            salarioAtual <= 2000.00 THEN
+                valorPercentual:= 7;
+        ELSE
+            valorPercentual:= 4;
+    END CASE;
+    -- valor do reajuste em porcentagem
+    valorReajuste:= salarioAtual * valorPercentual / 100;
+    salarioReajuste:= salarioAtual + valorReajuste;
+
+    -- Print dos resultados conforme solicitado no "problema 1048 do Beecrowd"
+    RAISE NOTICE 'Salário atual: R$ %', salarioAtual;
+    RAISE NOTICE 'Reajuste Percentual % %%', valorPercentual;
+    RAISE NOTICE 'Reajuste ganho: R$ %', valorReajuste;
+    RAISE NOTICE 'Novo salário: R$ %', salarioReajuste;
+END;
+$$
