@@ -1,6 +1,6 @@
 # 📘 Exercícios PL/pgSQL - FATEC 2025.1
 
-Este repositório contém os exercícios desenvolvidos na disciplina de **Banco de Dados II**, com foco em **PL/pgSQL (Procedural Language for PostgreSQL)**.
+Este repositório contém os exercícios desenvolvidos na disciplina de **Programação em Banco de Dados I**, com foco em **PL/pgSQL**.
 
 ## ✍️ Conteúdo
 
