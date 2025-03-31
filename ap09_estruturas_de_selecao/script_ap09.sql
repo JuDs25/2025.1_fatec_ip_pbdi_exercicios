@@ -140,3 +140,41 @@ BEGIN
     END CASE;
 END;
 $$
+
+--  1.4 Um comerciante comprou um produto e quer vendê-lo com um lucro de 45% se o valor
+ -- da compra for menor que R$20. Caso contrário, ele deseja lucro de 30%. Faça um
+ -- programa que, dado o valor do produto, calcula o valor de venda
+
+ -- SOLUÇÃO 1.4 - Com apenas IF e suas variações
+DO $$
+DECLARE
+    valorProduto REAL:= valor_aleatorio_entre(1, 100);
+    valorVenda REAL;
+BEGIN
+    IF valorProduto < 20 THEN
+        valorVenda:= valorProduto + (valorProduto * 0.45);
+        RAISE NOTICE 'O valor da venda é de R$ %', valorVenda;
+    ELSE
+        valorVenda:= valorProduto + (valorProduto * 0.30);
+        RAISE NOTICE 'O valor da venda é de R$ %', valorVenda;
+    END IF;
+END;
+$$
+
+-- SOLUÇÃO 2.4 - Com apenas CASE e suas variações
+DO $$
+DECLARE
+    valorProduto REAL:= valor_aleatorio_entre(1, 100);
+    valorVenda REAL;
+BEGIN
+    CASE
+        WHEN
+            valorProduto < 20 THEN
+                valorVenda:= valorProduto + (valorProduto * 0.45);
+                    RAISE NOTICE 'O valor da venda é de R$ %', valorVenda;
+        ELSE
+            valorVenda:= valorProduto + (valorProduto * 0.30);
+                RAISE NOTICE 'O valor da venda é de R$ %', valorVenda;
+    END CASE;
+END;
+$$
