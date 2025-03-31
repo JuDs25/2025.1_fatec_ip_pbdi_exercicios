@@ -74,3 +74,69 @@ BEGIN
     END CASE;
 END;
 $$
+
+--  1.3 Faça um programa que opera de acordo com o seguinte menu.
+-- Opções:
+--  1 - Soma
+--  2 - Subtração
+--  3 - Multiplicação
+--  4 - Divisão
+--  Cada operação envolve dois números inteiros. O resultado deve ser exibido no formato
+--  Exemplo:
+--  op1 op op2 = res
+--  2 + 3 = 5
+
+-- SOLUÇÃO 1.3 - Com apenas IF e suas variações
+DO $$
+DECLARE
+    -- opções de números
+    op1 INT:= valor_aleatorio_entre(1, 100);
+    op2 INT:= valor_aleatorio_entre(1, 100);
+    -- opções das 4 operações matemáticas do menu
+    op INT:= valor_aleatorio_entre(1, 4);
+    -- resultado esperado
+    res NUMERIC;
+BEGIN
+    IF op = 1 THEN
+        res:= op1 + op2;
+        RAISE NOTICE '% + % = %', op1, op2, res;
+    ELSIF op = 2 THEN
+        res:= op1 - op2;
+        RAISE NOTICE '% - % = %', op1, op2, res;
+    ELSIF op = 3 THEN
+        res:= op1 * op2;
+        RAISE NOTICE '% * % = %', op1, op2, res;
+    ELSIF op = 4 THEN
+        res:= op1::NUMERIC / op2;
+        RAISE NOTICE '% / % = %', op1, op2, res;
+    END IF;
+END;
+$$
+
+-- SOLUÇÃO 2.3 - Com apenas CASE e suas variações
+DO $$
+DECLARE
+    -- opções de números
+    op1 INT:= valor_aleatorio_entre(1, 100);
+    op2 INT:= valor_aleatorio_entre(1, 100);
+    -- opções das 4 operações matemáticas do menu
+    op INT:= valor_aleatorio_entre(1, 4);
+    -- resultado esperado
+    res NUMERIC;
+BEGIN
+    CASE
+        WHEN op = 1 THEN
+            res:= op1 + op2;
+                RAISE NOTICE '% + % = %', op1, op2, res;
+        WHEN op = 2 THEN
+            res:= op1 - op2;
+                RAISE NOTICE '% - % = %', op1, op2, res;
+        WHEN op = 3 THEN
+            res:= op1 * op2;
+                RAISE NOTICE '% * % = %', op1, op2, res;
+        WHEN op = 4 THEN
+            res:= op1::NUMERIC / op2;
+                RAISE NOTICE '% / % = %', op1, op2, res;
+    END CASE;
+END;
+$$
